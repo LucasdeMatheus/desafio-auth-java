@@ -1,5 +1,6 @@
 package com.desafio.user_api.infra;
 
+import com.desafio.user_api.domain.User;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.desafio.user_api.domain.UserRepository;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
@@ -26,7 +28,7 @@ public class SecurityFilter extends OncePerRequestFilter {
 
         if(tokenJWT != null) {
             var subject = tokenService.getSubject(tokenJWT);
-            var user = repository.findByLogin(subject);
+            User user = repository.findByEmail(subject);
             var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication((authentication));
         }

@@ -6,6 +6,5 @@ public record DataAuthentication(
         @NotBlank
         String email,
         @NotBlank
-        String password
-) {
+        String password) {
 }
