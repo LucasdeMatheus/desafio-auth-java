@@ -1,5 +1,6 @@
 package com.desafio.user_api.domain;
 
+import com.desafio.user_api.service.user.UserDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,15 @@ public class User implements UserDetails {
 
     private String password;
 
+    public User(String email, String name) {
+    }
+
+
+
+    public User(UserDTO data) {
+        this.email = data.email();
+        this.name = data.name();
+    }
 
 
     public long getId() {
