@@ -1,0 +1,3 @@
+[submodule "libs/email-library"]
+	path = libs/email-library
+	url = https://github.com/LucasdeMatheus/email.git
