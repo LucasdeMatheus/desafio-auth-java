@@ -5,54 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6986a021-8c32-4757-85d1-191d18712677" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/email-library" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/emails/delete-user.compiled.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/emails/deletesucess-user.compiled.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/emails/sucesschange-email.compiled.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/emails/sucesschange-password.compiled.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/emails/up-email.compiled.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/email/ConfirmEmailDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/email/EmailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/user/CodeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/user/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/desafio-auth-java.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/email-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/EmailConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/EmailConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/EmailSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/Type.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/email-library/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/email-library/src/test/java/com/myproject/sendEmails/SendEmailsApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/src/test/java/com/myproject/sendEmails/SendEmailsApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/UserApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/UserApiApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/config/ConfigCors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/config/ConfigCors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/controller/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/domain/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/domain/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/infra/DataTokenJWT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/infra/DataTokenJWT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/infra/SecurityConfigurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/infra/SecurityConfigurations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/infra/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/infra/SecurityFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/infra/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/infra/TokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/infra/springdoc/SpringDocConfigurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/infra/springdoc/SpringDocConfigurations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/service/authentication/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/authentication/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/service/authentication/DataAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/authentication/DataAuthentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/service/forgotPassword/DataEmail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/service/forgotPassword/DataforResetPassword.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/service/forgotPassword/PasswordService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/service/user/UpdateEmailDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/user/UpdateEmailDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/service/user/UpdatePasswordDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/user/UpdatePasswordDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/service/user/UserDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/com/desafio/user_api/service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/user/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/test/java/com/desafio/user_api/UserApiApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/desafio/user_api/UserApiApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,18 +52,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.UserApiApplication.executor": "Run",
-    "Application.com.desafio.userapi.UserApiApplication.executor": "Run",
-    "JavaMethodFindUsagesOptions.isOverridingMethods": "true",
-    "JavaMethodFindUsagesOptions.isSearchForTextOccurrences": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ffgus/desafio-auth-java/user-api/libs/email-library/src/main/resources/emails",
-    "settings.editor.selected.configurable": "MavenSettings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.UserApiApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.desafio.userapi.UserApiApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JavaMethodFindUsagesOptions.isOverridingMethods&quot;: &quot;true&quot;,
+    &quot;JavaMethodFindUsagesOptions.isSearchForTextOccurrences&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ffgus/desafio-auth-java/user-api/libs/email-library/src/main/resources/emails&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.desafio.userapi.controller" />
