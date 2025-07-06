@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6986a021-8c32-4757-85d1-191d18712677" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/libs/email-library" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/emails/delete-user.compiled.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/emails/deletesucess-user.compiled.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/emails/sucesschange-email.compiled.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/emails/sucesschange-password.compiled.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/emails/up-email.compiled.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/email-library" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/email-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/EmailConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/EmailConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/EmailSender.java" afterDir="false" />
@@ -32,7 +33,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/libs/email-library" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/desafio/user_api/infra/SecurityConfigurations.java" root0="SKIP_INSPECTION" />
