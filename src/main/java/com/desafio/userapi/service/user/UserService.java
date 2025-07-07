@@ -1,12 +1,11 @@
 package com.desafio.userapi.service.user;
 
-import com.desafio.userapi.service.email.ConfirmEmailDTO;
 import com.desafio.userapi.domain.User;
 import com.desafio.userapi.domain.UserRepository;
 import com.desafio.userapi.infra.TokenService;
+import com.desafio.userapi.service.email.ConfirmEmailDTO;
 import com.desafio.userapi.service.email.EmailService;
 import com.myproject.sendEmails.email.Type;
-import jakarta.validation.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +15,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -211,4 +211,30 @@ public class UserService {
         }
 
     }
+
+    public ResponseEntity<?> loginOAuth2(Map<String, Object> attributes) throws IOException {
+        String email = String.valueOf(attributes.get("email"));
+        User user = userRepository.findByEmail(email);
+
+        if (user == null) {
+            user = new User(new UserDTO(
+                    String.valueOf(attributes.get("name")),
+                    email));
+            user.setOauthUser(true);
+            userRepository.save(user);
+            emailService.sendSucess(email, user.getName(), Type.WELLCOME);
+        }
+
+        String token = tokenService.gerarToken(user);
+
+        Map<String, Object> response = Map.of(
+                "id", user.getId(),
+                "email", user.getEmail(),
+                "name", user.getName(),
+                "token", token
+        );
+
+        return ResponseEntity.ok(response);
+    }
+
 }

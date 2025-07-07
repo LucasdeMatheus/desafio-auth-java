@@ -19,13 +19,8 @@ public class Auth0Controller {
 
     @Autowired
     private AuthenticationService authenticationService;
-
-
     @Autowired
     private UserService userService;
-
-
-
 
     // to authentic with login
     @PostMapping("/login")
@@ -43,8 +38,4 @@ public class Auth0Controller {
     public ResponseEntity<?> verifyEmail(@RequestBody ConfirmEmailDTO data) throws IOException {
         return userService.verifyEmail(data);
     }
-
-    // to authentic/register user with GOOGLE
-
-    /////////////////////////////////////////////////////////////
 }

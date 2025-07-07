@@ -39,9 +39,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.example</groupId>          <!-- deve ser igual ao do pom da lib -->
-			<artifactId>sendEmails</artifactId>     <!-- idem -->
-			<version>0.0.1-SNAPSHOT</version>       <!-- idem -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency>
 
 		<dependency>
@@ -122,6 +121,12 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>5.2.2</version>
 		</dependency>
+		<dependency>
+			<groupId>com.myproject</groupId>
+			<artifactId>sendEmails</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -131,6 +136,23 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>application.properties</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>application.properties</include>
+				</includes>
+			</resource>
+		</resources>
+
 	</build>
 
 </project>

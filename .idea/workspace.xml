@@ -5,19 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6986a021-8c32-4757-85d1-191d18712677" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/emails/delete-user.compiled.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/emails/deletesucess-user.compiled.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/emails/sucesschange-email.compiled.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/emails/sucesschange-password.compiled.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/emails/up-email.compiled.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/email-library" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/email-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/EmailConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/EmailConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/EmailSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/src/main/java/com/myproject/sendEmails/email/Type.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/email-library/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/email-library/src/test/java/com/myproject/sendEmails/SendEmailsApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/src/test/java/com/myproject/sendEmails/SendEmailsApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/controller/Auth0Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/controller/Auth0Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/infra/SecurityConfigurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/infra/SecurityConfigurations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/authentication/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/authentication/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/user/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +45,7 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2uaqdksIFPMCYPihYrDDwhmhsJf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -57,12 +54,14 @@
   &quot;keyToString&quot;: {
     &quot;Application.UserApiApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.com.desafio.userapi.UserApiApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.sendEmails-0.0.1-SNAPSHOT.jar.executor&quot;: &quot;Run&quot;,
     &quot;JavaMethodFindUsagesOptions.isOverridingMethods&quot;: &quot;true&quot;,
     &quot;JavaMethodFindUsagesOptions.isSearchForTextOccurrences&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/ffgus/desafio-auth-java/user-api/libs/email-library/src/main/resources/emails&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -84,23 +83,20 @@
       <recent name="com.desafio.user_api" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.com.desafio.userapi.UserApiApplication">
+  <component name="RunManager" selected="Application.UserApiApplication">
     <configuration name="UserApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.desafio.user_api.UserApiApplication" />
-      <module name="userapi" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.desafio.user_api.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="com.desafio.userapi.UserApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <envs>
+        <env name="APP_PASSWORD" value="xwwg rkcb joyy tjje" />
+        <env name="EMAIL_CONFIG" value="ffmatheus6@gmail.com" />
+        <env name="MYSQL_HOST" value="localhost" />
+        <env name="MYSQL_PASSWORD" value="j@8A3_f29.8f.h982+391/2" />
+        <env name="MYSQL_user" value="root" />
+        <env name="TOKEN_SECRET" value="52526363" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="com.desafio.userapi.UserApiApplication" />
-      <module name="userapi" />
+      <module name="user-api" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.desafio.userapi.*" />
@@ -111,10 +107,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="sendEmails-0.0.1-SNAPSHOT.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/libs/email-library/target/sendEmails-0.0.1-SNAPSHOT.jar" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.com.desafio.userapi.UserApiApplication" />
         <item itemvalue="Application.UserApiApplication" />
+        <item itemvalue="JAR Application.sendEmails-0.0.1-SNAPSHOT.jar" />
       </list>
     </recent_temporary>
   </component>

@@ -19,6 +19,9 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(nullable = false)
+    private boolean oauthUser = false;
+
     private String name;
 
     @Column(unique = true, nullable = false)
@@ -26,8 +29,7 @@ public class User implements UserDetails {
 
     private String password;
 
-    public User(String email, String name) {
-    }
+
 
 
 
@@ -86,5 +88,13 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isOauthUser() {
+        return oauthUser;
+    }
+
+    public void setOauthUser(boolean oauthUser) {
+        this.oauthUser = oauthUser;
     }
 }

@@ -40,8 +40,8 @@ public class AuthenticationService implements UserDetailsService {
             String email = data.email();
 
             User user = userRepository.findByEmail(email);
-            if (user == null) {
-                return ResponseEntity.status(401).body(Map.of("error", "Credenciais inválidas"));
+            if (user == null || user.isOauthUser()) {
+                return ResponseEntity.status(401).body(Map.of("error", "Credenciais inválidas ou cadastro feito pelo google"));
             }
 
             // Busca o AuthenticationManager **na hora que precisar**, quebrando o ciclo
