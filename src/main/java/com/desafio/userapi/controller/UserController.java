@@ -1,12 +1,9 @@
 package com.desafio.userapi.controller;
 
-import com.desafio.userapi.domain.User;
-import com.desafio.userapi.service.user.UpdateEmailDTO;
-import com.desafio.userapi.service.user.UpdatePasswordDTO;
+import com.desafio.userapi.domain.user.User;
 import com.desafio.userapi.service.user.UserService;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

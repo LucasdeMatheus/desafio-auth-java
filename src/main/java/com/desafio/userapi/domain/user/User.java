@@ -1,4 +1,4 @@
-package com.desafio.userapi.domain;
+package com.desafio.userapi.domain.user;
 
 import com.desafio.userapi.service.email.ConfirmEmailDTO;
 import com.desafio.userapi.service.user.UserDTO;

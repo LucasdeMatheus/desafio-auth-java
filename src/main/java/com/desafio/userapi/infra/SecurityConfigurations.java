@@ -33,7 +33,7 @@ public class SecurityConfigurations {
                 .oauth2Login(oauth -> oauth
                         .defaultSuccessUrl("/oauth-success", true)
                 )
-                //.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 

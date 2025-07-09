@@ -1,8 +1,11 @@
 package com.desafio.userapi.service.user;
 
-import com.desafio.userapi.domain.User;
-import com.desafio.userapi.domain.UserRepository;
+import com.desafio.userapi.domain.client.Client;
+import com.desafio.userapi.domain.client.ClientRepository;
+import com.desafio.userapi.domain.user.User;
+import com.desafio.userapi.domain.user.UserRepository;
 import com.desafio.userapi.infra.TokenService;
+import com.desafio.userapi.service.authentication.TypeUser;
 import com.desafio.userapi.service.email.ConfirmEmailDTO;
 import com.desafio.userapi.service.email.EmailService;
 import com.myproject.sendEmails.email.Type;
@@ -24,8 +27,10 @@ import java.util.Map;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Autowired
     private TokenService tokenService;
 
@@ -34,8 +39,13 @@ public class UserService {
 
     @Autowired
     private CodeService codeService;
+
     @Autowired
     private AuthenticationManager manager;
+
+    @Autowired
+    private ClientRepository clientRepository;
+
     public ResponseEntity<Map<String, Object>> register(UserDTO data) {
         try {
             if (userRepository.existsByEmail(data.email())){
@@ -168,42 +178,90 @@ public class UserService {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Código inválido"));
             }
             User user = null;
+            Client client = null;
 
+            // IF(para usuario normais) e ELSE(para usuarios OAuth2)
             switch (data.type()) {
                 case VALIDEMAIL -> {
-                    user = new User(data);
-                    emailService.sendSucess(user.getEmail(), user.getName(), Type.WELLCOME);
-                    user.setPassword(passwordEncoder.encode(data.password()));
+                    if (data.typeUser().equals(TypeUser.USER)) {
+                        user = new User(data);
+                        emailService.sendSucess(user.getEmail(), user.getName(), Type.WELLCOME);
+                        user.setPassword(passwordEncoder.encode(data.password()));
+                    }else{
+                        client = new Client(data);
+                        emailService.sendSucess(client.getEmail(), client.getClientId(), Type.WELLCOME);
+                        client.setClientSecret(passwordEncoder.encode(data.password()));
+                    }
                 }
                 case UPPASSWORD -> {
-                    user = userRepository.findByEmail(data.userDTO().email());
-                    emailService.sendSucess(user.getEmail(), user.getName(), Type.SUCESSCHANGEPASSWORD);
-                    user.setPassword(passwordEncoder.encode(data.password()));
+
+                    if (data.typeUser().equals(TypeUser.USER)) {
+                        user = userRepository.findByEmail(data.userDTO().email());
+                        emailService.sendSucess(user.getEmail(), user.getName(), Type.SUCESSCHANGEPASSWORD);
+                        user.setPassword(passwordEncoder.encode(data.password()));
+                    }else{
+                        client = clientRepository.findByEmail(data.userDTO().email());
+                        emailService.sendSucess(client.getEmail(), client.getClientId(), Type.SUCESSCHANGEPASSWORD);
+                        client.setClientSecret(passwordEncoder.encode(data.password()));
+
+                    }
                 }
                 case UPEMAIL -> {
-                    user = userRepository.findByEmail(data.userDTO().email());
-                    user.setEmail(codeService.getCodeMap().get("email-change"));
-                    emailService.sendSucess(user.getEmail(), user.getName(), Type.SUCESSCHANGEEMAIL);
+                    if (data.typeUser().equals(TypeUser.USER)){
+                        user = userRepository.findByEmail(data.userDTO().email());
+                        user.setEmail(codeService.getCodeMap().get("email-change"));
+                        emailService.sendSucess(user.getEmail(), user.getName(), Type.SUCESSCHANGEEMAIL);
+                    }else{
+                        client = clientRepository.findByEmail(data.userDTO().email());
+                        client.setEmail(codeService.getCodeMap().get("email-change"));
+                        emailService.sendSucess(client.getEmail(), client.getClientId(), Type.SUCESSCHANGEEMAIL);
+                    }
                 }
                 case DELETEUSER -> {
-                    emailService.sendSucess(data.userDTO().email(), data.userDTO().name(), Type.DELETESUCESSUSER);
-                    userRepository.deleteByEmail(data.userDTO().email());
-                    return ResponseEntity.ok("Usuario excluido com sucesso");
+                    if (data.typeUser().equals(TypeUser.USER)) {
+                        emailService.sendSucess(data.userDTO().email(), data.userDTO().name(), Type.DELETESUCESSUSER);
+                        userRepository.deleteByEmail(data.userDTO().email());
+                        return ResponseEntity.ok("Usuario excluido com sucesso");
+                    }else{
+                        emailService.sendSucess(data.userDTO().email(), data.userDTO().name(), Type.DELETESUCESSUSER);
+                        clientRepository.deleteByEmail(data.userDTO().email());
+                        return ResponseEntity.ok("Client excluido com sucesso");
+                    }
                 }
             }
-            userRepository.save(user);
-            
-            var authToken = new UsernamePasswordAuthenticationToken(user.getEmail(), data.password());
-            var authentication = manager.authenticate(authToken);
-            var token = tokenService.gerarToken((User) authentication.getPrincipal());
+            Map<String, Object> response;
 
-            // success message
-            Map<String, Object> response = Map.of(
-                    "id", user.getId(),
-                    "email", user.getEmail(),
-                    "name", user.getName(),
-                    "token", token
-            );
+            var token = "";
+
+
+            if (data.typeUser().equals(TypeUser.USER)) {
+                userRepository.save(user);  // salva antes de autenticar
+                var authToken = new UsernamePasswordAuthenticationToken(user.getEmail(), data.password());
+                var authentication = manager.authenticate(authToken);
+                User authenticatedUser = (User) authentication.getPrincipal();
+                token = tokenService.gerarToken(authenticatedUser);
+
+                response = Map.of(
+                        "id", authenticatedUser.getId(),
+                        "email", authenticatedUser.getEmail(),
+                        "name", authenticatedUser.getName(),
+                        "token", token
+                );
+            } else {
+                clientRepository.save(client);
+                var authToken = new UsernamePasswordAuthenticationToken(client.getEmail(), data.password());
+                var authentication = manager.authenticate(authToken);
+                Client authenticatedClient = (Client) authentication.getPrincipal();
+                token = tokenService.gerarToken(authenticatedClient);
+
+                response = Map.of(
+                        "id", authenticatedClient.getId(),
+                        "email", authenticatedClient.getEmail(),
+                        "client id", authenticatedClient.getClientId(),
+                        "token", token
+                );
+            }
+
             return ResponseEntity.ok(response);
         }catch (Exception e) {
             e.printStackTrace();  // para ver detalhes no log

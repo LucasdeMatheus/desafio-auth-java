@@ -5,13 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6986a021-8c32-4757-85d1-191d18712677" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/email-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/libs/email-library/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/controller/Auth0Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/controller/Auth0Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/controller/Auth0Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/controller/OAuth2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/controller/OAuth2Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/domain/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/domain/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/domain/user/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/infra/SecurityConfigurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/infra/SecurityConfigurations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/infra/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/infra/SecurityFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/infra/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/infra/TokenService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/authentication/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/authentication/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/authentication/DataAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/authentication/DataAuthentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/email/ConfirmEmailDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/email/ConfirmEmailDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desafio/userapi/service/user/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
@@ -23,6 +30,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Record" />
         <option value="Class" />
       </list>
@@ -40,6 +48,9 @@
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -60,13 +71,15 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ffgus/desafio-auth-java/user-api/libs/email-library/src/main/resources/emails&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ffgus/Desktop/obs&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.desafio.userapi.controller" />
+      <recent name="com.desafio.userapi.service.client" />
+      <recent name="com.desafio.userapi.domain.client" />
       <recent name="com.desafio.user_api.controller" />
       <recent name="com.desafio.user_api.service.authentication.oAuth" />
     </key>
@@ -89,10 +102,10 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <envs>
         <env name="APP_PASSWORD" value="xwwg rkcb joyy tjje" />
+        <env name="DB_HOST_SERVER" value="mysql.josuejuca.com" />
+        <env name="DB_PASSWORD_SERVER" value="dc53fc4f621c80bdc2fa0329a6123708" />
         <env name="EMAIL_CONFIG" value="ffmatheus6@gmail.com" />
-        <env name="MYSQL_HOST" value="localhost" />
-        <env name="MYSQL_PASSWORD" value="j@8A3_f29.8f.h982+391/2" />
-        <env name="MYSQL_user" value="root" />
+        <env name="MYSQL_USER_SERVER" value="lucas" />
         <env name="TOKEN_SECRET" value="52526363" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="com.desafio.userapi.UserApiApplication" />

@@ -1,7 +1,5 @@
 package com.desafio.userapi.controller;
 
-import com.desafio.userapi.domain.User;
-import com.desafio.userapi.service.user.UserDTO;
 import com.desafio.userapi.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

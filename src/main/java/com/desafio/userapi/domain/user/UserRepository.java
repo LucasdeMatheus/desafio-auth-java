@@ -1,4 +1,4 @@
-package com.desafio.userapi.domain;
+package com.desafio.userapi.domain.user;
 
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
