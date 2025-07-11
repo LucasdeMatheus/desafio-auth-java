@@ -44,8 +44,8 @@ POST /auth/register
 **Body:**
 ```json
 {
-	"name": "exemplo",
-    "email": "exemplo@gmail.com"
+  "name": "exemplo",
+  "email": "exemplo@gmail.com"
 }
 ```
 
@@ -180,3 +180,14 @@ https://app.com/callback?code=XYZ
 - Email com código de verificação
 
 ---
+
+## configurações
+
+- mude as variaveis de ambiente
+- -- `MYSQL_USER_SERVER` user do mysql
+- -- `DB_PASSWORD_SERVER` senha do mysql
+- -- `DB_HOST_SERVER` host
+- -- `OAuth_Client_ID` config google
+- -- `OAuth_Client_Secret_Key` config google
+- -- `EMAIL_CONFIG` email que irá enviar os emails
+- -- `APP_PASSWORD` senha do email. Recomendável usar APP PASSWORD que é oferecido na google.
