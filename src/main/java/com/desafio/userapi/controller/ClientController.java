@@ -26,4 +26,6 @@ public class ClientController {
         }
         return clientService.config(data, client);
     }
+
+
 }

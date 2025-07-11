@@ -1,10 +1,14 @@
 package com.desafio.userapi.service.authentication;
 
+import com.desafio.userapi.controller.TokenDTO;
 import com.desafio.userapi.domain.client.Client;
 import com.desafio.userapi.domain.client.ClientRepository;
 import com.desafio.userapi.domain.user.User;
 import com.desafio.userapi.domain.user.UserRepository;
 import com.desafio.userapi.infra.TokenService;
+import com.desafio.userapi.service.client.AuthorizationCodeService;
+import com.desafio.userapi.service.client.GrantType;
+import com.nimbusds.oauth2.sdk.AuthorizationCode;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +20,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.net.URI;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class AuthenticationService implements UserDetailsService {
@@ -37,6 +43,12 @@ public class AuthenticationService implements UserDetailsService {
     @Autowired
     private ClientRepository clientRepository;
 
+    @Autowired
+    private AuthorizationCodeService authorizationCodeService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Client client = clientRepository.findByEmail(username);
@@ -53,48 +65,74 @@ public class AuthenticationService implements UserDetailsService {
 
     public ResponseEntity<?> login(@Valid DataAuthentication data, HttpSession session) {
         try {
-            AuthenticationManager manager = applicationContext.getBean(AuthenticationManager.class);
-            var authenticationToken = new UsernamePasswordAuthenticationToken(data.email(), data.password());
-            var authentication = manager.authenticate(authenticationToken);
+            String token = "";
+            String clientId = null;
+            Client client = null;
+            User user = null;
+            Map<String, Object> response;
 
-            String token;
-            String redirectUri = (String) session.getAttribute("redirect_uri");
+            if (session != null) {
+                clientId = (String) session.getAttribute("client_id");
+                System.out.println(clientId);
+            }
+
+            Optional<Client> clientSession = clientRepository.findByClientId(clientId);
 
             if (data.typeUser() == TypeUser.USER) {
-                User user = userRepository.findByEmail(data.email());
+                user = userRepository.findByEmail(data.email());
                 if (user == null || user.isOauthUser()) {
                     return ResponseEntity.status(401).body(Map.of("error", "Credenciais inválidas ou cadastro feito pelo Google"));
                 }
-                token = tokenService.gerarToken(user);
+
+                AuthenticationManager manager = applicationContext.getBean(AuthenticationManager.class);
+                var authToken = new UsernamePasswordAuthenticationToken(data.email(), data.password());
+                var authentication = manager.authenticate(authToken);
+
+                token = clientSession.isPresent()
+                        ? tokenService.gerarToken((User) authentication.getPrincipal(), clientSession.get().getScopes())
+                        : tokenService.gerarToken(user, null);
+
             } else {
-                Client client = clientRepository.findByEmail(data.email());
+                client = clientRepository.findByEmail(data.email());
                 if (client == null || client.isOauthUser()) {
                     return ResponseEntity.status(401).body(Map.of("error", "Credenciais inválidas ou cadastro feito pelo Google"));
                 }
+
+                if (!passwordEncoder.matches(data.password(), client.getClientSecret())) {
+                    return ResponseEntity.status(401).body(Map.of("error", "Senha inválida"));
+                }
+
                 token = tokenService.gerarToken(client);
             }
 
-            if (redirectUri != null) {
-                // Remove dados da sessão
+            if (clientSession.isPresent() && clientSession.get().getRedirectUri() != null) {
                 session.removeAttribute("redirect_uri");
                 session.removeAttribute("client_id");
 
-                // Monta a URI de redirecionamento com token na query string
-                String redirectWithToken = redirectUri + "?token=" + token;
-
-                return ResponseEntity.ok(redirectWithToken);
-            } else {
-                // Retorna JSON normal se não for fluxo SSO
-                return ResponseEntity.ok(Map.of(
-                        "message", "Login realizado com sucesso",
-                        "token", token
-                ));
+                String code = authorizationCodeService.createCode(token);
+                String redirectUri = clientSession.get().getRedirectUri();
+                return ResponseEntity.status(HttpStatus.FOUND)
+                        .body(redirectUri + "?code=" + code)
+//                        .location(URI.create(redirectUri + "?code=" + code))
+//                        .build();
+                ;
             }
 
+            response = data.typeUser().equals(TypeUser.USER)
+                    ? Map.of("id", user.getId(), "email", user.getEmail(), "name", user.getName(), "token", token)
+                    : Map.of("id", client.getId(), "email", client.getEmail(), "name", client.getClientId(), "token", token);
+
+            return ResponseEntity.ok(response);
+
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(401).body(Map.of("error", "Credenciais inválidas"));
         }
     }
+
+
+
+
 
 
 }

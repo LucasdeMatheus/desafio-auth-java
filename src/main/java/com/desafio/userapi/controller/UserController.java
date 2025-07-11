@@ -28,12 +28,9 @@ public class UserController {
         return userService.updateEmail(email, user);
     }
 
-    @PutMapping("/update-password/{id}")
-    public ResponseEntity<?> updatePassword(@PathVariable("id") Long id, @AuthenticationPrincipal User user) {
-        if (user.getId() != id) {
-            return ResponseEntity.status(403).body(Map.of("error", "Acesso negado"));
-        }
-        return userService.updatePassword(user);
+    @PutMapping("/update-password")
+    public ResponseEntity<?> updatePassword(@RequestBody UPpasswordDTO uPpasswordDTO) {
+        return userService.updatePassword(uPpasswordDTO);
     }
 
     @DeleteMapping("/delete/{id}")

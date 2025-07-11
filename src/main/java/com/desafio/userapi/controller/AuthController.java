@@ -3,6 +3,7 @@ package com.desafio.userapi.controller;
 import com.desafio.userapi.domain.client.Client;
 import com.desafio.userapi.domain.client.ClientRepository;
 import com.desafio.userapi.service.authentication.TypeUser;
+import com.desafio.userapi.service.client.ClientService;
 import com.desafio.userapi.service.email.ConfirmEmailDTO;
 import com.desafio.userapi.service.user.UserDTO;
 import com.desafio.userapi.service.user.UserService;
@@ -32,6 +33,9 @@ public class AuthController {
     @Autowired
     private ClientRepository clientRepository;
 
+    @Autowired
+    private ClientService clientService;
+
     // to authentic with login
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@Valid @RequestBody DataAuthentication data, HttpSession session) {
@@ -54,7 +58,7 @@ public class AuthController {
     public ResponseEntity<?> authorize(@RequestParam("client_id") String clientId,
                                           @RequestParam("redirect_uri") String redirectUri,
                                           HttpSession session){
-        // 1. Verifica se client existe
+
         Optional<Client> optionalClient = clientRepository.findByClientId(clientId);
 
         if (optionalClient.isEmpty()) {
@@ -63,18 +67,22 @@ public class AuthController {
 
         Client client = optionalClient.get();
 
-        // 2. Verifica se o redirect_uri está correto
+
         if (!client.getRedirectUri().equals(redirectUri)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Redirect URI inválido"));
         }
 
-        // 3. Salva na sessão para usar depois no login
+
         session.setAttribute("client_id", clientId);
         session.setAttribute("redirect_uri", redirectUri);
 
-        // 4. Redireciona para a tela de login
-        URI loginUri = URI.create("/auth/login");
+
+        URI loginUri = URI.create("/login");
         return ResponseEntity.status(HttpStatus.FOUND).location(loginUri).build();
     }
 
+    @PostMapping("/token")
+    private ResponseEntity<?> getToken(@RequestBody TokenDTO data){
+        return clientService.handleGrantType(data);
+    }
 }

@@ -1,10 +1,12 @@
 package com.desafio.userapi.infra;
 
 import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.desafio.userapi.domain.client.Client;
+import com.desafio.userapi.service.client.Scope;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import com.desafio.userapi.domain.user.User;
@@ -12,6 +14,8 @@ import com.desafio.userapi.domain.user.User;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class TokenService {
@@ -21,30 +25,43 @@ public class TokenService {
 
     private static final String ISSUER = "user-api";
 
-    public String gerarToken(User user) {
+    public String gerarToken(User user, Set<Scope> scopes) {
         try {
-            var algoritmo = Algorithm.HMAC256(secret);
-            return JWT.create()
+            Algorithm algoritmo = Algorithm.HMAC256(secret);
+            JWTCreator.Builder builder = JWT.create()
                     .withIssuer(ISSUER)
                     .withSubject(String.valueOf(user.getId()))
                     .withClaim("type", "user")
-                    .withClaim("email", user.getEmail())
-                    .withClaim("name", user.getName())
-                    .withExpiresAt(dataExpiracao())
-                    .sign(algoritmo);
+                    .withExpiresAt(dataExpiracao());
+
+            // Escopos dinâmicos
+            if (scopes != null) {
+
+                if (scopes.contains(Scope.EMAIL)) {
+                    builder.withClaim("email", user.getEmail());
+                }
+                if (scopes.contains(Scope.NAME)) {
+                    builder.withClaim("name", user.getName());
+                }
+
+                // Também pode incluir o escopo no token para registrar o que foi concedido
+                List<String> scopeList = scopes.stream().map(Enum::name).toList();
+                builder.withClaim("scopes", scopeList);
+            }
+
+            return builder.sign(algoritmo);
         } catch (JWTCreationException exception) {
             throw new RuntimeException("Erro ao gerar token JWT", exception);
         }
     }
+
     public String gerarToken(Client client) {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
                     .withIssuer(ISSUER)
                     .withSubject(String.valueOf(client.getId()))
-                    .withClaim("type", "client")
                     .withClaim("clientId", client.getClientId())
-                    .withClaim("email", client.getEmail())
                     .withExpiresAt(dataExpiracao())
                     .sign(algoritmo);
         } catch (JWTCreationException exception) {
